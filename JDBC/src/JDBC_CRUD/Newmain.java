@@ -9,7 +9,8 @@ public class Newmain {
             System.out.println("Enter 1 to Get");
             System.out.println("Enter 2 to Delete");
             System.out.println("Enter 3 to Post");
-            System.out.println("Enter 4 to Exit");
+            System.out.println("Enter 4 to getbyid");
+            System.out.println("Enter 5 to Exit");
             int a= sc.nextInt();
             if(a==1){
                 StudentDao.showdata();
@@ -47,6 +48,11 @@ public class Newmain {
                 }
             }
             else if(a==4){
+                System.out.println("Enter Id to Show");
+                int id=sc.nextInt();
+                StudentDao.getbyid(id);
+            }
+            else if(a==5){
                 break;
             }
         }

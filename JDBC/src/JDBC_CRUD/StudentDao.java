@@ -59,4 +59,35 @@ public class StudentDao {
             throw new RuntimeException(e);
         }
     }
+    public static void getbyid(int userid){
+        Connection cn = connectionfile.connectionfunction();
+        String query = "Select * from Persons where id=?";
+        try {
+            String sqlQuery = "SELECT * FROM Persons WHERE id = ?";
+            PreparedStatement preparedStatement = cn.prepareStatement(sqlQuery);
+
+            // Set the ID parameter in the prepared statement
+            preparedStatement.setInt(1, userid);
+
+            // Execute the query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Check if a record was found and process the data
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("FirstName");
+                // Continue extracting other fields as needed
+
+                // Process the data (e.g., display, use it in your application, etc.)
+                System.out.println("Record found:");
+                System.out.println("ID: " + id);
+                System.out.println("Name: " + name);
+            } else {
+                System.out.println("No record found with ID: " );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
